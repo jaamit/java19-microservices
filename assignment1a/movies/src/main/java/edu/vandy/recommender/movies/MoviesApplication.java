@@ -17,7 +17,7 @@ import java.util.List;
  * configurations on their "application" class.
  */
 @SpringBootApplication
-public class MoviesApplication {
+public class  MoviesApplication {
     /**
      * The static main() entry point runs this Spring application.
      */

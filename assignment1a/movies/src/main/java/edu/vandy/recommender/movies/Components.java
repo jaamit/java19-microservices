@@ -1,6 +1,8 @@
 package edu.vandy.recommender.movies;
 
 import edu.vandy.recommender.movies.model.Movie;
+import org.springframework.beans.BeanWrapper;
+import org.springframework.beans.BeanWrapperImpl;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -8,8 +10,10 @@ import org.springframework.context.annotation.PropertySource;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.util.DefaultUriBuilderFactory;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 import static edu.vandy.recommender.movies.Constants.MOVIES_BASE_URL;
 
@@ -28,8 +32,9 @@ public class Components {
      *                data
      * @return A {@link Map} of {@link String} and {@link List<Double>} objects
      */
-    // TODO -- Add the appropriate annotation to make this factory
+    // DONE -- Add the appropriate annotation to make this factory
     // method a "Bean".
+    @Bean
     public Map<String, List<Double>> movieMap
     // The @Value annotation injects values into fields in
     // Spring-managed beans.
@@ -48,6 +53,7 @@ public class Components {
      */
     // TODO -- Add the appropriate annotation to make this factory
     // method a "Bean".
+    @Bean
     public List<Movie> movieList
         // The @Value annotation injects values into fields in
         // Spring-managed beans.
@@ -57,18 +63,31 @@ public class Components {
         // then convert this into a List of Movie objects and return
         // this List.
 
-        // TODO -- You fill in here, replacing 'return null' with the
+        // DONE -- You fill in here, replacing 'return null' with the
         // proper code.
+//        Map<String, List<Double>> movieMap = MovieDatasetReader.loadMovieData(dataset);
+//        List<Movie> allMovies = new ArrayList<>();
+//        movieMap.forEach((k, v) -> {
+//            Movie movie = new Movie(k, v);
+//            allMovies.add(movie);
+//                });
+//        return allMovies;
 
-        return null;
+        // Using stream API
+        return movieMap(dataset)
+                .entrySet()
+                .stream()
+                .map(title -> new Movie(title.getKey(), title.getValue()))
+                .toList();
     }
 
     /**
      * @return A new {@link RestTemplate} that knows how to connect to
      * the 'movies' microservice.
      */
-    // TODO -- Add the appropriate annotation to make this factory
+    // DONE -- Add the appropriate annotation to make this factory
     // method a "Bean".
+    @Bean
     public RestTemplate getMoviesRestTemplate() {
         RestTemplate restTemplate = new RestTemplate();
 

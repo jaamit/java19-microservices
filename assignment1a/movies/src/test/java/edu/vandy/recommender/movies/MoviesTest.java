@@ -89,7 +89,7 @@ public class MoviesTest {
 
             assertEquals(matchedMovie,
                          matchingMovie.id());
-                         
+
         }
     }
 
@@ -133,7 +133,7 @@ public class MoviesTest {
 
             assertEquals(matchedMovie,
                          matchingMovie.id());
-                         
+
         }
     }
 }
