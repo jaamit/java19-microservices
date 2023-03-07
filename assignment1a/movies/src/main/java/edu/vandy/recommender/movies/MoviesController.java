@@ -92,7 +92,7 @@ public class MoviesController {
      * @return A {@link List} of movie titles containing the queries
      *         represented as {@link Movie} objects
      */
-    // TODO -- Create an endpoint with an annotation that maps HTTP
+    // DONE -- Create an endpoint with an annotation that maps HTTP
     // GET requests onto a handler method for "searches"
     // (GET_SEARCHES) that uses a @RequestParam parameter and forwards
     // to the MoviesServices.search(List<String> queries) method.

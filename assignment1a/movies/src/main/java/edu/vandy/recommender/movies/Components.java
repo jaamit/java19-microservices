@@ -74,10 +74,11 @@ public class Components {
 //        return allMovies;
 
         // Using stream API
-        return movieMap(dataset).entrySet().stream().map( it -> {
-            Movie movie = new Movie(it.getKey(), it.getValue());
-            return movie;
-        }).collect(Collectors.toList());
+        return movieMap(dataset)
+                .entrySet()
+                .stream()
+                .map(title -> new Movie(title.getKey(), title.getValue()))
+                .toList();
     }
 
     /**
