@@ -37,8 +37,8 @@ public class MoviesController {
     /**
      * Spring-injected {@link MoviesService}.
      */
-    // TODO -- ensure that 'service' is autowired with the appropriate
-    // @Bean factory method.
+    // DONE -- ensure that 'service' is autowired with the appropriate
+    @Autowired
     private MoviesService service;
 
     /**
@@ -58,10 +58,14 @@ public class MoviesController {
     /**
      * @return A {@link List} of all movies
      */
-    // TODO -- Create an endpoint with an annotation that maps HTTP
+    // DONE -- Create an endpoint with an annotation that maps HTTP
     // GET requests onto a handler method for "all-movies"
     // (GET_ALL_MOVIES) that takes no parameters and forwards to the
     // MoviesService.getMovies() method.
+    @GetMapping(GET_ALL_MOVIES)
+    public List<Movie> getAllMovies() {
+        return service.getMovies();
+    }
 
     /**
      * Search for movie titles in the database containing the given

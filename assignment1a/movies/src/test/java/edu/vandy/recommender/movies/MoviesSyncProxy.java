@@ -30,16 +30,16 @@ public class MoviesSyncProxy {
         // Use the UriComponentsBuilder to create a URL to the
         // "all-movies" endpoint of the 'movies' microservice.
 
-        // TODO -- you fill in here, replacing 'null' with the proper
+        // DONE -- you fill in here, replacing 'null' with the proper
         // code.
-        String url = null;
+        String url = UriComponentsBuilder.fromPath(GET_ALL_MOVIES).build().toUriString();
 
         // Use WebUtils.makeGetRequestList() and mMoviesRestTemplate
         // to get a List of all movies from the 'movie' microservice.
 
-        // TODO -- you fill in here, replacing 'null'
+        // DONE -- you fill in here, replacing 'null'
         // with the proper code.
-        List<Movie> movies = null;
+        List<Movie> movies = WebUtils.makeGetRequestList(mMoviesRestTemplate, url, Movie[].class);
 
         if (movies == null)
             throw new IllegalStateException
