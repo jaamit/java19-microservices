@@ -84,7 +84,7 @@ public class Components {
      * @return A new {@link RestTemplate} that knows how to connect to
      * the 'movies' microservice.
      */
-    // TODO -- Add the appropriate annotation to make this factory
+    // DONE -- Add the appropriate annotation to make this factory
     // method a "Bean".
     @Bean
     public RestTemplate getMoviesRestTemplate() {

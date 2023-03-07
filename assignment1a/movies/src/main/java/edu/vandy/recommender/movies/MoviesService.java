@@ -7,6 +7,10 @@ import org.springframework.stereotype.Service;
 import java.util.Collection;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
+
+import java.net.URLDecoder;
+import java.nio.charset.StandardCharsets;
 
 /**
  * This class defines implementation methods that are called by the
@@ -51,9 +55,14 @@ public class MoviesService {
         // Locate all movies whose 'id' matches the 'query' and return
         // them as a List of Movie objects.
 
-        // TODO -- you fill in here, replacing 'return null' with
+        // DONE -- you fill in here, replacing 'return null' with
         // the proper code.
-        return null;
+        String qry = URLDecoder.decode(query, StandardCharsets.UTF_8);
+        return mMovies
+                .stream()
+                .filter(movie -> movie.id().toLowerCase()
+                                .contains(qry.toLowerCase()))
+                .toList();
     }
 
     /**
@@ -69,8 +78,13 @@ public class MoviesService {
         // Locate all movies whose 'id' matches the List of 'queries'
         // and return them as a List of Movie objects.
 
-        // TODO -- you fill in here, replacing 'return null' with
-        // the proper code.
-        return null;
+        // DONE -- you fill in here, replacing 'return null' with
+        // using Java sequential streams
+        return mMovies
+                .stream()
+                .filter(movie -> queries
+                        .stream()
+                        .anyMatch(query -> movie.id().toLowerCase().contains(query.toLowerCase()))
+                ).toList();
    }
 }

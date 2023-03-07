@@ -43,98 +43,98 @@ public class MoviesTest {
                      movies.size());
     }
 
-//    @Test
-//    public void testGetMoviesContents() {
-//        var movies = mMoviesSyncProxy
-//            .getMovies();
-//
-//        int i = 0;
-//        for (var movie : mMovies.entrySet()) {
-//            assertEquals(movie.getKey(),
-//                         movies.get(i).id());
-//            assertIterableEquals(movie.getValue(),
-//                                 movies.get(i++).vector());
-//        }
-//    }
-//
-//    @Test
-//    public void testSearchMoviesSize() {
-//        var searchWord = "Star";
-//        var matchingMovies = mMoviesSyncProxy
-//            .searchMovies(searchWord);
-//
-//        assertEquals(33,
-//                     matchingMovies.size());
-//    }
-//
-//    @Test
-//    public void testSearchMoviesContents() {
-//        var searchWord = "Star";
-//        var matchingMovies = mMoviesSyncProxy
-//            .searchMovies(searchWord);
-//
-//        var iterator =
-//            mMovies.entrySet().iterator();
-//        for (Movie matchingMovie : matchingMovies) {
-//            String matchedMovie = "";
-//
-//            while (iterator.hasNext()) {
-//                var nextMovie = iterator.next().getKey();
-//                if (nextMovie.toLowerCase()
-//                    .contains(searchWord.toLowerCase())) {
-//                    matchedMovie = nextMovie;
-//                    break;
-//                }
-//            }
-//
-//            assertEquals(matchedMovie,
-//                         matchingMovie.id());
-//
-//        }
-//    }
-//
-//    @Test
-//    public void testSearchMoviesManySize() {
-//        var watchedMovies = List
-//            .of("Trek", "War");
-//
-//        var matchingMovies = mMoviesSyncProxy
-//            .searchMovies(watchedMovies);
-//
-//        assertEquals(65,
-//                     matchingMovies.size());
-//    }
-//
-//    @Test
-//    public void testSearchMoviesManyContents() {
-//        var watchedMovies = List
-//            .of("Trek", "War");
-//
-//        var matchingMovies = mMoviesSyncProxy
-//            .searchMovies(watchedMovies);
-//
-//        var iterator =
-//            mMovies.entrySet().iterator();
-//
-//        for (Movie matchingMovie : matchingMovies) {
-//            String matchedMovie = "";
-//
-//            outer:
-//            while (iterator.hasNext()) {
-//                var nextMovie = iterator.next().getKey();
-//
-//                for (var searchWord : watchedMovies)
-//                    if (nextMovie.toLowerCase()
-//                        .contains(searchWord.toLowerCase())) {
-//                        matchedMovie = nextMovie;
-//                        break outer;
-//                    }
-//            }
-//
-//            assertEquals(matchedMovie,
-//                         matchingMovie.id());
-//
-//        }
-//    }
+    @Test
+    public void testGetMoviesContents() {
+        var movies = mMoviesSyncProxy
+            .getMovies();
+
+        int i = 0;
+        for (var movie : mMovies.entrySet()) {
+            assertEquals(movie.getKey(),
+                         movies.get(i).id());
+            assertIterableEquals(movie.getValue(),
+                                 movies.get(i++).vector());
+        }
+    }
+
+    @Test
+    public void testSearchMoviesSize() {
+        var searchWord = "Star";
+        var matchingMovies = mMoviesSyncProxy
+            .searchMovies(searchWord);
+
+        assertEquals(33,
+                     matchingMovies.size());
+    }
+
+    @Test
+    public void testSearchMoviesContents() {
+        var searchWord = "Star";
+        var matchingMovies = mMoviesSyncProxy
+            .searchMovies(searchWord);
+
+        var iterator =
+            mMovies.entrySet().iterator();
+        for (Movie matchingMovie : matchingMovies) {
+            String matchedMovie = "";
+
+            while (iterator.hasNext()) {
+                var nextMovie = iterator.next().getKey();
+                if (nextMovie.toLowerCase()
+                    .contains(searchWord.toLowerCase())) {
+                    matchedMovie = nextMovie;
+                    break;
+                }
+            }
+
+            assertEquals(matchedMovie,
+                         matchingMovie.id());
+
+        }
+    }
+
+    @Test
+    public void testSearchMoviesManySize() {
+        var watchedMovies = List
+            .of("Trek", "War");
+
+        var matchingMovies = mMoviesSyncProxy
+            .searchMovies(watchedMovies);
+
+        assertEquals(65,
+                     matchingMovies.size());
+    }
+
+    @Test
+    public void testSearchMoviesManyContents() {
+        var watchedMovies = List
+            .of("Trek", "War");
+
+        var matchingMovies = mMoviesSyncProxy
+            .searchMovies(watchedMovies);
+
+        var iterator =
+            mMovies.entrySet().iterator();
+
+        for (Movie matchingMovie : matchingMovies) {
+            String matchedMovie = "";
+
+            outer:
+            while (iterator.hasNext()) {
+                var nextMovie = iterator.next().getKey();
+
+                for (var searchWord : watchedMovies)
+                    if (nextMovie.toLowerCase()
+                        .contains(searchWord.toLowerCase())) {
+                        matchedMovie = nextMovie;
+                        break outer;
+                    }
+            }
+
+            assertEquals(matchedMovie,
+                         matchingMovie.id());
+
+        }
+    }
 }
     

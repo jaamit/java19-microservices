@@ -14,6 +14,8 @@ import java.util.List;
 import static edu.vandy.recommender.movies.Constants.EndPoint.GET_ALL_MOVIES;
 import static edu.vandy.recommender.movies.Constants.EndPoint.GET_SEARCH;
 import static edu.vandy.recommender.movies.Constants.EndPoint.GET_SEARCHES;
+import static edu.vandy.recommender.movies.Constants.EndPoint.SEARCH_QUERY;
+
 
 /**
  * The Spring controller for the {@link MoviesService}, whose endpoint
@@ -75,10 +77,12 @@ public class MoviesController {
      * @return A {@link List} of movie titles containing the query
      *         represented as {@link Movie} objects
      */
-    // TODO -- Create an endpoint with an annotation that maps HTTP
+    // DONE -- Create an endpoint with an annotation that maps HTTP
     // GET requests onto a handler method for "search" (GET_SEARCH)
     // that uses a @PathVariable parameter and forwards to the
     // MoviesService.search(String query) method.
+    @GetMapping(GET_SEARCH + SEARCH_QUERY)
+    public List<Movie> search(@PathVariable String query) { return service.search(query); }
 
     /**
      * Search for movie titles in the database containing the given
@@ -92,4 +96,6 @@ public class MoviesController {
     // GET requests onto a handler method for "searches"
     // (GET_SEARCHES) that uses a @RequestParam parameter and forwards
     // to the MoviesServices.search(List<String> queries) method.
+    @GetMapping(GET_SEARCHES)
+    public List<Movie> searches(@RequestParam List<String> queries) { return service.search(queries); }
 }
