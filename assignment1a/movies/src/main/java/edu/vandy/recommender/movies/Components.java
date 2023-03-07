@@ -63,36 +63,21 @@ public class Components {
         // then convert this into a List of Movie objects and return
         // this List.
 
-        // TODO -- You fill in here, replacing 'return null' with the
+        // DONE -- You fill in here, replacing 'return null' with the
         // proper code.
-        Map<String, List<Double>> movieMap = MovieDatasetReader.loadMovieData(dataset);
-        List<Movie> allMovies = new ArrayList<>();
-        movieMap.forEach((k, v) -> {
-            Movie movie = new Movie(k, v);
-            allMovies.add(movie);
-                });
-        return allMovies;
-//        List<StaffPublic> result = staff.stream().map(temp -> {
-//            StaffPublic obj = new StaffPublic();
-//            obj.setName(temp.getName());
-//            obj.setAge(temp.getAge());
-//            if ("mkyong".equals(temp.getName())) {
-//                obj.setExtra("this field is for mkyong only!");
-//            }
-//            return obj;
-//        }).collect(Collectors.toList());
+//        Map<String, List<Double>> movieMap = MovieDatasetReader.loadMovieData(dataset);
+//        List<Movie> allMovies = new ArrayList<>();
+//        movieMap.forEach((k, v) -> {
+//            Movie movie = new Movie(k, v);
+//            allMovies.add(movie);
+//                });
+//        return allMovies;
 
-//        return movieMap(dataset).entrySet().stream().map(
-//                it -> {
-//                    Movie obj = new Movie(it.getKey(), it.getValue());
-//                }
-//                return obj;
-//        ).collect(Collectors.toList());
-//        BeanWrapper movieList = new BeanWrapperImpl(new Movie(null, null));
-//        for (movieMap)
-//        movieMap(dataset).forEach(movieList(dataset));
-
-//        for(MovieDatasetReader.loadMovieData(dataset) : )
+        // Using stream API
+        return movieMap(dataset).entrySet().stream().map( it -> {
+            Movie movie = new Movie(it.getKey(), it.getValue());
+            return movie;
+        }).collect(Collectors.toList());
     }
 
     /**
