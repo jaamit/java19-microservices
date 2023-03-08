@@ -24,8 +24,9 @@ public class ServerBeans {
      *                data
      * @return A {@link Map} of {@link String} and {@link List<Double>} objects
      */
-    // TODO -- Add the appropriate annotation to make this factory
+    // DONE -- Add the appropriate annotation to make this factory
     // method a "Bean".
+    @Bean
     public Map<String, List<Double>> movieMap
     // The @Value annotation injects values into fields in
     // Spring-managed beans.
@@ -42,8 +43,9 @@ public class ServerBeans {
      *                data
      * @return A {@link List} of {@link Movie} objects
      */
-    // TODO -- Add the appropriate annotation to make this factory
+    // DONE -- Add the appropriate annotation to make this factory
     // method a "Bean".
+    @Bean
     public List<Movie> movieList
         // The @Value annotation injects values into fields in
         // Spring-managed beans.
@@ -53,9 +55,13 @@ public class ServerBeans {
         // then convert this into a List of Movie objects and return
         // this List.
 
-        // TODO -- You fill in here, replacing 'return null' with the
+        // DONE -- You fill in here, replacing 'return null' with the
         // proper code.
 
-        return null;
+        return movieMap(dataset)
+                .entrySet()
+                .stream()
+                .map(title -> new Movie(title.getKey(), title.getValue()))
+                .toList();
     }
 }

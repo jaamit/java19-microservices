@@ -31,17 +31,18 @@ public class MoviesService {
      * This auto-wired field connects the {@link MoviesService} to the
      * {@link List} of {@link Movie} objects.
      */
-    // TODO -- ensure that mMovies is autowired with the appropriate
+    // DONE -- ensure that mMovies is autowired with the appropriate
     // @Bean factory method.
+    @Autowired
     List<Movie> mMovies;
 
     /**
      * @return A {@link List} of all the movies
      */
     public List<Movie> getMovies() {
-        // TODO -- you fill in here, replacing 'return null' with
+        // DONE -- you fill in here, replacing 'return null' with
         // the proper code.
-        return null;
+        return mMovies;
     }
 
     /**
